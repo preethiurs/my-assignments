@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Button factory</title>
+  </head>
+
+  <body>
+    <div class="content_view"></div>
+    <div id="table_wrapper2"></div>
+    <box></box>
+  </body>
+
+</html>
+
+<script>
+
+    
+var buttonFactory=function()
+{
+    var count=0;
+    return{
+        create: function(object)
+             {         
+                    var para = document.createElement("button");                      
+                    var t = document.createTextNode(object.text); 
+                    var btnId = "btn".concat(new Date().getTime()).concat(Math.random());
+                    para.appendChild(t);
+                    if(object.onClick)
+                         para.onclick=object.onClick;
+                    if(object.style){
+                       para.style.border=object.style.border;
+                       para.style.color=object.style.color;
+                       para.style.background=object.style.background;
+                       para.style.outline=object.style.outline;
+                    }
+                    para.id=btnId
+                    var element=document.querySelector(object.parent);
+                    if(element){
+                    element.appendChild(para);
+                    }else{
+                        throw new UserException("InvalidElement");
+                    }
+                     
+                return btnId; 
+            
+        },
+        setText: function(object)
+        {   
+            var element=document.getElementById(object.button);
+            if(element){
+            element.innerHTML=object.text;}
+            else{
+            throw new UserException("InvalidElement");
+            }
+                
+        },
+        setOnClickListener: function(object)
+        {   
+            var element=document.getElementById(object.button);
+            if(element){
+            element.onclick=object.onClick;}
+            else{
+            throw new UserException("InvalidElement");
+            }
+        }
+        
+   
+    };
+    
+    
+}()
+
+var getElements=function(){
+    
+try{
+  
+  var contentViewButton=buttonFactory.create({
+  parent: ".content_view",
+  text: "View content",
+    
+});
+ 
+var tableButton = buttonFactory.create({
+  parent: "#table_wrapper2",
+  text: "Click table me",
+  onClick: function() {
+    alert("I'm the table button");
+  },
+  style: {
+    border: "1px solid red",
+    color: "white",
+    background: "black",
+    outline: "none"
+  }
+});
+  var boxButton = buttonFactory.create({
+  parent: "box",
+  text: "Box box box",
+  onClick: function() { alert("I'm the box button"); },
+  style: {
+    border: "2px solid black"
+  }
+});  
+buttonFactory.setText({
+  button: contentViewButton,
+  text: "Click me"
+});
+
+
+buttonFactory.setOnClickListener({
+  button: contentViewButton,
+  onClick: function() {
+    alert("Hello there ");
+  }
+});    
+    
+}
+catch(err)
+{
+console.error(err.message);
+}
+ 
+}();
+function UserException(message)    
+    {
+        
+    this.message = message;
+    this.name = "UserException";
+        
+    }
+</script>
