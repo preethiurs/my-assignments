@@ -1,0 +1,4 @@
+input=[ [{name: "vinoj"}, {name: "dixy"}], {name: "amala"}, {name: "arjun"}];
+
+var output =[].concat.apply([],input);
+console.log("flattened array " +JSON.stringify(output));
