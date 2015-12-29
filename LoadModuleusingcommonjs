@@ -1,0 +1,10 @@
+var someModule = require('./say');  
+exports.doSomethingElse = function() { 
+    return someModule.doSomething() + "bar";
+};
+
+
+
+//say module
+
+exports.doSomething = function() { return "foo"; };
