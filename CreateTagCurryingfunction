@@ -1,0 +1,50 @@
+
+var create=(tag)=>(content)=>(attri)=>{
+    if(`${attri}`== "undefined"){
+        return `
+       <${tag}>
+       ${content}
+       </${tag}>`
+       }else{
+        var res="";
+         res+=`<${tag}`;
+         attri.map(function(attributes){
+                res+="\t"+ attributes.attribname+'="'+attributes.attribvalue+'"';
+            });
+            res+=`>${content}</${tag}>`;
+            return res;
+       }
+  
+};
+
+var headertag = create('h1');
+
+var header2tag = create('h2');
+
+var paratag= create('p');
+
+var divtag= create('div');
+
+var headerdes1=headertag('Header one');
+
+
+
+var headeratt=headerdes1([{"attribname": "class","attribvalue" : "header1"},{"attribname": "onclick","attribvalue" : "alert(on click)"}]);
+
+
+
+var parades1=paratag('paragraph one');
+
+var divdes1=divtag(headeratt+parades1());
+
+var headerdes2=header2tag('Header two');
+
+var  header2att=headerdes2([{"attribname": "class","attribvalue" : "header2"},{"attribname": "onclick","attribvalue" : "alert(on click)"}]);
+
+var para2=paratag('pragraph two');
+
+var divdes2=divtag(header2att+para2());
+
+var finaldiv=divtag(divdes1()+divdes2());
+
+console.log(finaldiv());
