@@ -1,50 +1,37 @@
 
-var create=(tag)=>(content)=>(attri)=>{
-    if(`${attri}`== "undefined"){
-        return `
-       <${tag}>
-       ${content}
-       </${tag}>`
-       }else{
-        var res="";
-         res+=`<${tag}`;
-         attri.map(function(attributes){
-                res+="\t"+ attributes.attribname+'="'+attributes.attribvalue+'"';
-            });
-            res+=`>${content}</${tag}>`;
+var  tag = (tag)=>(attri)=>(Content)=>
+    {
+            var res=`<${tag}${attri.reduce(function(acc, property){
+                    return acc + ` ${property.attribname}="${property.attribvalue}"`
+                  }, '')}>${Content}</${tag}>\n`;
             return res;
-       }
-  
-};
+    };
+ 
 
-var headertag = create('h1');
+var h1 = tag('h1');
 
-var header2tag = create('h2');
+var h2 = tag('h2');
 
-var paratag= create('p');
-
-var divtag= create('div');
-
-var headerdes1=headertag('Header one');
+var p =tag('p');
 
 
-
-var headeratt=headerdes1([{"attribname": "class","attribvalue" : "header1"},{"attribname": "onclick","attribvalue" : "alert(on click)"}]);
-
+var heder1des = h1([{"attribname": "class","attribvalue" : "header1"},{"attribname": "onclick","attribvalue" : "alert(on click header1)"}]);
 
 
-var parades1=paratag('paragraph one');
+var heder2des = h2([{"attribname": "class","attribvalue" : "header2"},{"attribname": "onclick","attribvalue" : "alert(on click header 2 )"}]);
 
-var divdes1=divtag(headeratt+parades1());
 
-var headerdes2=header2tag('Header two');
+var para1des = p([{"attribname": "class","attribvalue" : "paragraph 1"},{"attribname": "onclick","attribvalue" : "alert(on click paragraph 1 )"}]);
 
-var  header2att=headerdes2([{"attribname": "class","attribvalue" : "header2"},{"attribname": "onclick","attribvalue" : "alert(on click)"}]);
 
-var para2=paratag('pragraph two');
+var para2des = p([{"attribname": "class","attribvalue" : "paragraph 2"},{"attribname": "onclick","attribvalue" : "alert(on click paragraph 2 )"}]);
 
-var divdes2=divtag(header2att+para2());
 
-var finaldiv=divtag(divdes1()+divdes2());
+var divtag1= tag('div')([])(`${heder1des('Header One')} ${para1des('paragraph One')}`);
 
-console.log(finaldiv());
+var divtag2= tag('div')([])(`${heder2des('Header Two')} ${para2des('paragraph Two')}`);
+
+var maindiv= tag('div')([])(divtag1+divtag2);
+
+console.log(maindiv);
+
