@@ -1,5 +1,0 @@
-require("amd-loader");
-define('myModule', ['./foo'], function($) {
-    
-    console.log("my module");
-});

@@ -1,6 +1,0 @@
-
-var input=["vinoj,arjun", "dixy", "amala,abc"];
-var output = input.join();
-var res=output.split(",");
-console.log("result " +JSON.stringify(res));
-
