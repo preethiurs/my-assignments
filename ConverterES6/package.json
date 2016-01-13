@@ -3,12 +3,6 @@
   "version": "1.0.0",
   "main": "app.js",
   "dependencies": {
-    "amd-loader": "^0.0.5",
-    "define": "^1.0.1",
-    "express": "^4.13.3",
-    "node-requirejs-define": "^1.0.1",
-    "node-static": "^0.7.7",
-    "requirejs": "^2.1.22",
     "webpack": "^1.12.10"
   },
   "devDependencies": {
