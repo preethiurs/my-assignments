@@ -1,4 +1,4 @@
-export const multiplyfactor = 0.62137;
+const multiplyfactor = 0.62137;
 
 export function convertKilometerToMiles(km)
 {

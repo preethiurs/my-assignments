@@ -53,21 +53,6 @@
 
 	"use strict";
 
-	/*var convert=function()
-	    {
-	  var multiplyfactor=0.62137;
-	           
-	    return {
-	    getkilometers: function(mi){
-	       return mi/multiplyfactor;
-	    },
-	    
-	    getmiles: function(km){
-	       return km*multiplyfactor;
-	    }
-	          
-	  };
-	}()*/
 
 	function getConvertMiles() {
 	    var km = document.getElementById("kilometer").value;
