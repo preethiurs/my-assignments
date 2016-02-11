@@ -1,0 +1,30 @@
+it is usualy built for word press
+
+what is redux?
+Redux provides a predictable state container.
+view the entire state of your application
+derive the ui from this state
+see how the actions modify the state of your application
+
+
+
+immutable data structure
+create new structure whenever we updates 
+it will share the common memory area
+
+transit js 
+
+used to serialize anything
+
+
+how to use redux for state representation
+
+keep the data in the way which u like for ex : array, immutable data structure etc
+using reducers we can modify the data
+using suscribers propagate the data to all over the application
+
+
+pure and impure functions
+pure : returned value depends only on the parameters,no side effects in d sense it will not update the data
+
+
