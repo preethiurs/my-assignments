@@ -1,0 +1,67 @@
+.header {
+    font-size: 20px;
+    background-color: #ADB1B0;
+    height: 47px;
+    text-align: center;
+}
+#leftpanel {
+    width: 20%;
+    height: 269px;
+    background-color: #8A92A2;
+    float: left;
+}
+#content {
+    background-color: #DAE4E4;
+    width: 80%;
+    height: 269px;
+    float: left;
+}
+#contentHearder {
+    text-align: center;
+    font-size: 30px;
+}
+.editclass {
+    width: 8%;
+    height: 10%;
+    background-color: cadetblue;
+}
+#editTitle {
+    padding: 5px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 25%;
+    margin-top: 2%;
+}
+#contentEdit {
+    display: none;
+}
+#editDescription {
+    padding: 5px;
+    border: 2px solid rgb(204, 204, 204);
+    border-radius: 5px;
+    text-align: center;
+    margin: 20.5469px 170.453px 0px 20.5469px;
+    width: 836px;
+    height: 74px;
+}
+.saveclass {
+    width: 8%;
+    height: 10%;
+    background-color: cadetblue;
+    margin-left: 25%;
+}
+#editcancel {
+    width: 8%;
+    height: 10%;
+    background-color: cadetblue;
+    margin-left: 6%;
+    margin-top: -26px;
+}
+.footer {
+    background-color: #ADB1B0;
+}
+.footerp {
+    text-align: center;
+}

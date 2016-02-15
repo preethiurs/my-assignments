@@ -19,13 +19,17 @@ var articleId=document.getElementById("articleid").value;
 var articletitle=document.getElementById("articletitle").value;
 var articleBody=document.getElementById("articlebody").value;
 
-
 this.props.contents.dispatch({type : 'update',articleId : articleId, articletitle : articletitle, articleBody : articleBody});
+this.setState({editarea : false});
+alert("Data has been saved successfully");
 
 }
 cancel()
 {
-console.log("cancel update");
+var r = confirm("You have unsaved changes .. do you want to continue ?? ");
+if (r == true) {
+    this.setState({editarea : false});
+} 
 }
 
 

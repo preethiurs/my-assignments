@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 class App extends React.Component {
@@ -22,21 +20,26 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <Slider ref="red" update={this.update} />
+        <Slider ref="red" update={this.update} onClick={this.refs.red.refs.inp.loadSArticle}/>
         {this.state.red}
-        <br />
+        <br/>
         <Slider ref="green" update={this.update} />
         {this.state.green}
-        <br />
+        <br/>
         <Slider ref="blue" update={this.update} />
         {this.state.blue}
-        <br />
+        <br/>
       </div>
     );
   }
 }
 
 class Slider extends React.Component {
+   loadSArticle()
+   {
+    console.log("load article function"); 
+   }
+
   render(){
     return (
         <div>
