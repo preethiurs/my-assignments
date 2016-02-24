@@ -2,8 +2,10 @@
   "name": "articleloadereact",
   "version": "1.0.0",
   "description": "",
-  "main": "App.js",
-  "dependencies": {},
+  "main": "app.jsx",
+  "dependencies": {
+    "redux-thunk": "^1.0.3"
+  },
   "devDependencies": {
     "babel-core": "^6.5.1",
     "babel-loader": "^6.2.2",
