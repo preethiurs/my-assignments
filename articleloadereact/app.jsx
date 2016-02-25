@@ -10,10 +10,16 @@ class App extends React.Component {
         super(props);
         this.displayName = '';
         this.getArticleContent = this.getArticleContent.bind(this);
+        this.state = {currentobject: null};
     }
 
     getArticleContent(e) {
-        this.refs.contentref.loadArtcile(e.target.getAttribute('id'));
+        var data = this.props.state;
+        for (var key in data) {
+            if (data[key].articleId === e.target.getAttribute('id')) {
+                this.setState({currentobject: data[key]});
+            }
+        }
     }
 
     componentWillMount() {
@@ -24,14 +30,14 @@ class App extends React.Component {
         return <div>
             <h1 id="title">Article Loader</h1>
             <LeftPanel onclick={this.getArticleContent} contents={this.props.state}/>
-            <Content ref="contentref" contents={this.props}/>
+            <Content ref="contentref" contents={this.state.currentobject}/>
         </div>;
     }
 }
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
     return {state};
 };
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
     return {dispatch: dispatch}
 }
 export default connect(

@@ -1,5 +1,7 @@
 import React from "react";
-export default class Content extends React.Component {
+import {connect} from "react-redux";
+import {mapStateToProps, mapDispatchToProps} from "./app.jsx";
+class Content extends React.Component {
     constructor(props) {
         super(props);
         this.displayName = '';
@@ -14,7 +16,7 @@ export default class Content extends React.Component {
         var articleId = document.getElementById("articleid").value;
         var articletitle = document.getElementById("articletitle").value;
         var articleBody = document.getElementById("articlebody").value;
-        this.props.contents.dispatch({
+        this.props.dispatch({
             type: 'update',
             articleId: articleId,
             articletitle: articletitle,
@@ -31,15 +33,6 @@ export default class Content extends React.Component {
         }
     }
 
-    componentDidMount() {
-        const {store} = this.context;
-        this.unsubscribe = store.subscribe(() => this.forceUpdate());
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-
     onChangeInput(e) {
         this.setState({articleTitle: e.target.value});
     }
@@ -48,27 +41,23 @@ export default class Content extends React.Component {
         this.setState({articleBody: e.target.value});
     }
 
-    loadArtcile(articleId) {
-        console.log("load article props", this.props);
-        const {store} = this.context;
-        const state = store.getState();
-        this.setState({contentarea: true, editarea: false});
-        var obj = state.map((articles) => {
-            if (articles.articleId == articleId) {
-                this.setState({
-                    articleid: articles.articleId,
-                    articleTitle: articles.articleTitle,
-                    articleBody: articles.articleBody,
-                    editbtn: true
-                });
-                return articles;
-            }
-        })
+    componentWillReceiveProps(props) {
+        console.log("component will recieve props ", props.contents);
+        if (props.contents) {
+            this.setState({
+                articleid: props.contents.articleId,
+                articleTitle: props.contents.articleTitle,
+                articleBody: props.contents.articleBody,
+                editbtn: true,
+                contentarea: true
+            });
+        }
     }
 
     render() {
         var contentarea, editarea;
         if (this.state.contentarea) {
+            console.log("inside content render content");
             contentarea = < div id="article">
                 < h2 id="articleTitle">{this.state.articleTitle}</h2>
                 < p id="articleBody">{ this.state.articleBody} </p>
@@ -107,4 +96,8 @@ class Button extends React.Component {
         return <button className="button" onClick={this.props.click}>{this.props.value}</button>;
     }
 }
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Content);
 

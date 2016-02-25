@@ -1,5 +1,4 @@
 import React from "react";
-import Content from "./contents.jsx";
 export default class LeftPanel extends React.Component {
     constructor(props) {
         super(props);
@@ -31,8 +30,5 @@ export default class LeftPanel extends React.Component {
     }
 }
 LeftPanel.contextTypes = {
-    store: React.PropTypes.object
-};
-Content.contextTypes = {
     store: React.PropTypes.object
 };
